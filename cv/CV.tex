@@ -1,0 +1,169 @@
+%% ============================================================================
+%%  ACADEMIC CV  —  Economics (PhD job-market style)
+%%  ----------------------------------------------------------------------------
+%%  HOW TO USE
+%%   1. Replace every [PLACEHOLDER] and the sample entries with your own info.
+%%   2. Compile with pdfLaTeX (Overleaf: just upload this file and hit Recompile;
+%%      locally: run `pdflatex CV.tex`).
+%%   3. Copy the resulting CV.pdf to ../files/CV.pdf so your website links to it.
+%%
+%%  EDITING TIPS
+%%   - Delete a whole section by removing from \section{...} to the next \section.
+%%   - Each entry uses \cventry or \cvline (defined below) — copy a line to add more.
+%%   - Keep the % comments; they explain each part. Text after % is ignored.
+%% ============================================================================
+
+\documentclass[11pt,letterpaper]{article}
+
+% ---- Packages ---------------------------------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}                 % clean serif (Latin Modern)
+\usepackage[margin=1in]{geometry}    % 1-inch margins
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{tabularx}
+\usepackage{array}
+\usepackage[hidelinks]{hyperref}
+\usepackage{xcolor}
+
+\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
+
+% ---- Spacing ----------------------------------------------------------------
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\linespread{1.05}
+
+% ---- Section styling: small-caps heading with a full-width rule -------------
+\titleformat{\section}
+  {\large\scshape}                 % font of the heading (large small-caps)
+  {}{0em}
+  {}[\vspace{2pt}\hrule\vspace{4pt}]
+\titlespacing*{\section}{0pt}{12pt}{4pt}
+
+% ---- Helper macros ----------------------------------------------------------
+% \cventry{Left/description}{Right (year, right-aligned)}
+% The left text sits at the margin; the year is pushed to the right margin.
+\newcommand{\cventry}[2]{%
+  \par\noindent #1\hfill #2\par\vspace{3pt}%
+}
+
+
+% \cvline{single line of text} — for simple bulletless entries
+\newcommand{\cvline}[1]{#1\par\vspace{3pt}}
+
+% Bold "you" so your name stands out in coauthored work
+\newcommand{\me}{\textbf{[YOUR NAME]}}
+
+% ============================================================================
+\begin{document}
+
+% ----------------------------------------------------------------------------
+%  HEADER
+% ----------------------------------------------------------------------------
+\begin{center}
+  {\LARGE\bfseries [YOUR NAME]}\\[6pt]
+  {\normalsize Curriculum Vitae}\\[8pt]
+  \begin{tabular}{c}
+    Department of Economics, McMaster University \\
+    Kenneth Taylor Hall, 1280 Main Street West, Hamilton, ON, Canada \, L8S 4M4 \\
+    Email: \href{mailto:[you@mcmaster.ca]}{[you@mcmaster.ca]} \quad$\bullet$\quad
+    Phone: [+1 (XXX) XXX-XXXX] \quad$\bullet$\quad
+    Web: \href{https://[yourwebsite.com]}{[yourwebsite.com]}
+  \end{tabular}\\[4pt]
+  {\footnotesize Last updated: [Month YEAR]}
+\end{center}
+\vspace{6pt}
+
+% ----------------------------------------------------------------------------
+\section{Education}
+\cventry{\textbf{Ph.D. in Economics}, McMaster University}{(expected) 20XX}
+\cvline{\quad Dissertation: ``[Working title of your dissertation]''}
+\cvline{\quad Committee: [Advisor Name] (Chair), [Committee Member], [Committee Member]}
+\vspace{4pt}
+\cventry{\textbf{M.A. in Economics}, [University]}{20XX}
+\cventry{\textbf{B.A. (Hons.) in Economics}, [University]}{20XX}
+
+% ----------------------------------------------------------------------------
+\section{Fields of Specialization}
+\cvline{\textbf{Primary:} Health Economics, Public Economics}
+\cvline{\textbf{Secondary:} Labour Economics, Applied Microeconomics}
+
+% ----------------------------------------------------------------------------
+\section{Job Market Paper}
+\cvline{``[Title of Your Job Market Paper]''}
+\cvline{\small\textit{Abstract available upon request. One-line summary of the question and main finding.}}
+
+% ----------------------------------------------------------------------------
+\section{Publications}
+% Numbered, most recent first. Delete this block if you have none yet.
+\begin{enumerate}[leftmargin=*, labelsep=6pt, itemsep=4pt]
+  \item ``[Title of Published Paper],'' with [Coauthor]. \textit{[Journal Name]}, 20XX, Vol.~XX(X), pp.~XXX--XXX.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Working Papers}
+\begin{enumerate}[leftmargin=*, labelsep=6pt, itemsep=4pt]
+  \item ``[Title of Working Paper],'' with [Coauthor], 20XX. \textit{(Under review at [Journal])}.
+  \item ``[Title of Second Working Paper],'' 20XX.
+\end{enumerate}
+
+% ----------------------------------------------------------------------------
+\section{Work in Progress}
+\begin{itemize}[leftmargin=*, itemsep=3pt]
+  \item ``[Title of ongoing project],'' with [Coauthor].
+  \item ``[Another project in early stages].''
+\end{itemize}
+
+% ----------------------------------------------------------------------------
+\section{Grants, Honours \& Fellowships}
+\cventry{[Name of Scholarship / Fellowship], [Funder]}{20XX--20XX}
+\cventry{[Graduate Research Award], McMaster University}{20XX}
+\cventry{[Conference Travel Grant], [Funder]}{20XX}
+
+% ----------------------------------------------------------------------------
+\section{Teaching Experience}
+\cvline{\textit{Instructor of Record, McMaster University}}
+\cventry{\quad ECON XXX: [Course Name]}{Fall 20XX}
+\vspace{3pt}
+\cvline{\textit{Teaching Assistant, McMaster University}}
+\cventry{\quad ECON XXX: [Course Name]}{20XX--20XX}
+\cventry{\quad ECON XXX: [Course Name]}{20XX}
+
+% ----------------------------------------------------------------------------
+\section{Research Experience}
+\cventry{Research Assistant to [Professor Name], McMaster University}{20XX--20XX}
+\cventry{Research Assistant, [Institution / Project]}{20XX}
+
+% ----------------------------------------------------------------------------
+\section{Conference \& Seminar Presentations}
+% Add "*" for talks given by a coauthor.
+\cventry{[Conference / Seminar Name], [City]}{20XX}
+\cventry{[Conference / Seminar Name], [City]}{20XX}
+
+% ----------------------------------------------------------------------------
+\section{Professional Service}
+\cvline{\textbf{Referee:} [Journal Name], [Journal Name].}
+\cvline{\textbf{Service:} [e.g., Graduate Student Seminar Organizer], McMaster University, 20XX--20XX.}
+
+% ----------------------------------------------------------------------------
+\section{Skills, Languages \& Citizenship}
+\cvline{\textbf{Software:} Stata, R, Python, \LaTeX, [others].}
+\cvline{\textbf{Languages:} [English (native)], [Other (fluent)].}
+\cvline{\textbf{Citizenship / Work Authorization:} [Country]; [work authorization status].}
+
+% ----------------------------------------------------------------------------
+\section{References}
+\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
+\textbf{[Advisor Name]} (Chair)          & \textbf{[Committee Member Name]} \\
+Professor of Economics                     & Associate Professor of Economics \\
+McMaster University                        & McMaster University \\
+\href{mailto:[email]}{[email]}             & \href{mailto:[email]}{[email]} \\[8pt]
+\textbf{[Committee Member Name]}          & \textbf{[Reference Name]} \\
+Associate Professor of Economics           & Professor of Economics \\
+{[University]}                              & {[University]} \\
+\href{mailto:[email]}{[email]}             & \href{mailto:[email]}{[email]} \\
+\end{tabular}
+
+
+\end{document}

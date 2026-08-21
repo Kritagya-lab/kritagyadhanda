@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Personal academic website" />
+  <title>Loading…</title>
+
+  <!-- Fonts: a clean serif for headings + a readable sans for body -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ===================== HEADER / NAV ===================== -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="brand" href="#top" id="brand"></a>
+      <nav class="nav" id="nav" aria-label="Primary"></nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <!-- ===================== PAGE SHEET (holds all content on a readable panel) ===================== -->
+  <div class="page-sheet">
+
+    <!-- ===================== HERO ===================== -->
+    <section id="top" class="hero">
+      <div class="container hero-inner">
+        <div class="hero-photo" id="heroPhoto"></div>
+        <div class="hero-text">
+          <h1 id="heroName"></h1>
+          <p class="hero-title" id="heroTitle"></p>
+          <p class="hero-affil" id="heroAffil"></p>
+          <div class="hero-links" id="heroLinks"></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== MAIN CONTENT (rendered from data.js) ===================== -->
+    <main class="container" id="main"></main>
+
+    <!-- ===================== FOOTER ===================== -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-links" id="footerLinks"></div>
+        <p class="footer-copy" id="footerCopy"></p>
+      </div>
+    </footer>
+
+  </div>
+
+
+  <script src="js/data.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
