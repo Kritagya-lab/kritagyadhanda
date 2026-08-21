@@ -83,6 +83,18 @@ const SITE = {
           { label: "Appendix", url: "" }
         ]
       },
+       {
+        titleText: "Physiological Constraints and Behavioral Adaptation: How high stakes professionals respond to fasting during Ramadan",
+        badge: "",              // e.g. "Job Market Paper", "R&R at ...", or "" for none
+        authors: ["Stephen Strobel & Kritagya Dhanda"],
+        year: "2025",
+        abstract: "Physiological constraints are often assumed to reduce worker productivity, but workers may instead adapt by changing effort across tasks or over time. We study this question in the Indian Premier League, a high-stakes professional cricket setting with ball-by-ball measures of output. We examine how Muslim batters respond to Ramadan fasting, a predictable physiological shock that potentially affects production. We compare Muslim and non-Muslim players using a difference-in-regression-discontinuities design that uses rule changes over the course of IPL games during and outside the Ramadan period. Muslim players during Ramadan smooth performance over match phases: early high-intensity production is muted, while later production is preserved or increases. Complementary difference-in-differences estimators suggest similar within player results and that teams respond modestly by substituting fasting players at higher rates. The results suggest that when production is divisible and workers can substitute effort across tasks, predictable physiological constraints can alter the composition of output more than its level.",
+        links: [
+          { label: "PDF", url: "" },
+          { label: "Slides", url: "" },
+          { label: "Appendix", url: "" }
+        ]
+      },
       {
         titleText: "Evaluation of Family Planning Policy in India Using Synthetic Control Methods",
         badge: "",
