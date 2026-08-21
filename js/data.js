@@ -172,7 +172,7 @@ const SITE = {
   contact: {
     enabled: true,
     heading: "Contact",
-    email: "dhandak@mcmaster.ca",                 // <-- replace with your real email
+    email: "dhandak@mcmaster.ca",                 
     office: "Kenneth Taylor Hall (KTH), Room 706",
     address: [
       "Department of Economics",
@@ -190,7 +190,7 @@ const SITE = {
     googleScholar: "",
     cv: "files/CV.pdf",
     email: "dhandak@mcmaster.ca",
-    linkedin: "",
+    linkedin: "www.linkedin.com/in/kritagya-dhanda-52908a104",
     twitter: "",
     github: "",
     ssrn: ""
