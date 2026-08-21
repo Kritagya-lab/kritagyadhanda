@@ -26,7 +26,7 @@ const SITE = {
   browserTitle: "Kritagya Dhanda",
   // Optional headshot. Put an image in the images/ folder and set the name here,
   // e.g. "images/headshot.jpg". Leave "" to show your initials instead.
-  photo: "main/images/headshot.jpg",
+  photo: "images/headshot.jpg",
 
   // Optional FULL-PAGE BACKGROUND PHOTO that covers the whole website.
   // Save your photo in the images/ folder and put its name here,
