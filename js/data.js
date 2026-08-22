@@ -21,7 +21,7 @@ const SITE = {
   title: "PhD Candidate in Economics",            // e.g. "Assistant Professor of Economics"
   affiliation: "",
   // A short line of extra roles/affiliations (optional, leave "" to hide):
-  affiliationExtra: "Department of Economics, McMaster University",
+  affiliationExtra: "Department of Economics McMaster University",
   // Text shown in the browser tab (usually your name):
   browserTitle: "Kritagya Dhanda",
   // Optional headshot. Put an image in the images/ folder and set the name here,
