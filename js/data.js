@@ -190,7 +190,7 @@ const SITE = {
     googleScholar: "",
     cv: "files/CV.pdf",
     email: "dhandak@mcmaster.ca",
-    linkedin: "www.linkedin.com/in/kritagya-dhanda-52908a104",
+    linkedin: "https://www.linkedin.com/in/kritagya-dhanda-52908a104/",
     twitter: "",
     github: "",
     ssrn: ""
