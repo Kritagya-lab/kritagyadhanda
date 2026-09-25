@@ -1,155 +1,290 @@
+%=============================================================
+% Academic CV template
+% Replicates the design of Angela Zheng's CV:
+%   - US Letter, Computer Modern fonts
+%   - Centered name (large bold) + contact line
+%   - Small-caps section headings with a full-width rule
+%   - Two-column entries: bold title (left) / date (right),
+%     institution in italics underneath
+%   - Bulleted research / publication lists
+%=============================================================
+\documentclass[11pt]{article}
 
-\documentclass[11pt,letterpaper]{article}
+% ---- Page geometry ----------------------------------------
+\usepackage[letterpaper,top=1in,bottom=1in,left=1in,right=1in]{geometry}
 
-% ---- Packages ---------------------------------------------------------------
+% ---- Fonts & encoding -------------------------------------
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
-\usepackage{lmodern}                 % clean serif (Latin Modern)
-\usepackage[margin=1in]{geometry}    % 1-inch margins
-\usepackage{enumitem}
-\usepackage{titlesec}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage[hidelinks]{hyperref}
+\usepackage{lmodern}          % Computer Modern-style font
+\usepackage{textcomp}
 \usepackage{xcolor}
+\usepackage{fancyhdr}
+% ---- Utilities --------------------------------------------
+\usepackage{enumitem}         % tidy list spacing
+\usepackage{titlesec}         % section formatting
+\usepackage[hidelinks]{hyperref}
+\usepackage{tabularx}
+\usepackage{hyperref}
 
-\hypersetup{colorlinks=true, urlcolor=black, linkcolor=black}
+% No page numbers (add \pagestyle{plain} if you want them)
+\pagestyle{fancy}
+\fancyhf{} % clear existing header/footer
 
-% ---- Spacing ----------------------------------------------------------------
-\setlength{\parindent}{0pt}
-\setlength{\parskip}{0pt}
-\linespread{1.05}
+\fancyfoot[R]{\footnotesize \textit{Last updated: September 2026}}
 
-% ---- Section styling: small-caps heading with a full-width rule -------------
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\definecolor{lightblue}{RGB}{70,130,180}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=lightblue,
+    urlcolor=lightblue,
+    citecolor=lightblue
+}
+
+% ---- Section heading style --------------------------------
+% Small-caps, followed by a full-width horizontal rule.
 \titleformat{\section}
-  {\large\scshape}                 % font of the heading (large small-caps)
-  {}{0em}
-  {}[\vspace{2pt}\hrule\vspace{4pt}]
-\titlespacing*{\section}{0pt}{12pt}{4pt}
+  {\normalfont\large\scshape}   % heading font
+  {}{0em}                       % no numbering
+  {}                            % code before title
+  [\vspace{2pt}\titlerule]      % rule under the title
+\titlespacing*{\section}{0pt}{12pt}{6pt}
 
-% ---- Helper macros ----------------------------------------------------------
-% \cventry{Left/description}{Right (year, right-aligned)}
-% The left text sits at the margin; the year is pushed to the right margin.
-\newcommand{\cventry}[2]{%
-  \par\noindent #1\hfill #2\par\vspace{3pt}%
+% ---- Custom entry macros ----------------------------------
+% \cventry{Title}{Date}{Institution / detail}
+\newcommand{\cventry}[3]{%
+  \noindent\begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & #2 \\
+  \end{tabularx}%
+  \vspace{-2pt}\\
+  \noindent\textit{#3}\par\vspace{6pt}%
 }
 
 
-% \cvline{single line of text} — for simple bulletless entries
-\newcommand{\cvline}[1]{#1\par\vspace{3pt}}
 
-% Bold "you" so your name stands out in coauthored work
-\newcommand{\me}{\textbf{[YOUR NAME]}}
+\newcommand{\phdentry}[6]{%
+  \noindent
+  \textbf{#1}\hfill #2\par
+  \vspace{-2pt}%
+  \noindent\textit{#3}\par
+  \noindent\textit{#4}\par
+  \noindent\textit{#5}\par
+  \noindent Expected completion: #6\par
+  \vspace{6pt}%
+}
 
-% ============================================================================
+\newcommand{\reference}[4]{%
+  \begin{minipage}[t]{0.31\linewidth}
+    \textbf{#1}\\
+    #2\\
+    #3\\
+    \texttt{#4}
+  \end{minipage}%
+}
+
+\newcommand{\jmp}[3]{%
+  \noindent\textbf{\underline{JOB MARKET PAPER}}\par
+  \vspace{4pt}%
+  \noindent\href{#1}{\textbf{#2}}\par
+  \vspace{2pt}%
+  \noindent #3\par
+  \vspace{8pt}%
+}
+
+\newcommand{\workingpaper}[5]{%
+  \noindent\textbf{(#1) \href{#2}{#3}} \textit{{#4}}\par
+  \vspace{2pt}%
+  \noindent #5\par
+  \vspace{6pt}%
+}
+
+\newcommand{\fields}[2]{%
+  \noindent #1\par
+  \vspace{4pt}%
+}
+
+\newcommand{\instructor}[4]{%
+  \noindent
+  \textbf{#1} \\
+  #2\hfill#3\par
+  \noindent\textit{#4}\par
+  \vspace{6pt}%
+}
+
+\newcommand{\serviceentry}[6]{%
+  \noindent
+  \begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbullet\ #1 & #3 \\
+    \textbullet\ #2 & #4 \\
+    \textit{#5}, \textit{#6} & \\
+  \end{tabularx}%
+  \vspace{4pt}%
+}
+
+
+\newcommand{\ta}[3]{%
+  \noindent
+  \textbf{#1}\par
+  \noindent #2\par
+  \noindent\textit{#3}\par
+  \vspace{4pt}%
+}
+
+% Bullet list for publications / research
+\newenvironment{cvlist}
+  {\begin{itemize}[leftmargin=1.2em,itemsep=4pt,topsep=2pt,parsep=0pt]}
+  {\end{itemize}}
+
+% Simple one-line item with a right-aligned date (teaching, etc.)
+\newcommand{\cvline}[3]{%
+  \noindent\begin{tabularx}{\linewidth}{@{}X r@{}}
+    \textbf{#1} & #2 \\
+  \end{tabularx}%
+  \vspace{-2pt}\\
+  \noindent\textit{#3}\par\vspace{6pt}%
+}
+
+%=============================================================
 \begin{document}
 
-% ----------------------------------------------------------------------------
-%  HEADER
-% ----------------------------------------------------------------------------
+% ---- Header ------------------------------------------------
 \begin{center}
-  {\LARGE\bfseries [YOUR NAME]}\\[6pt]
-  {\normalsize Curriculum Vitae}\\[8pt]
-  \begin{tabular}{c}
-    Department of Economics, McMaster University \\
-    Kenneth Taylor Hall, 1280 Main Street West, Hamilton, ON, Canada \, L8S 4M4 \\
-    Email: \href{mailto:[you@mcmaster.ca]}{[you@mcmaster.ca]} \quad$\bullet$\quad
-    Phone: [+1 (XXX) XXX-XXXX] \quad$\bullet$\quad
-    Web: \href{https://[yourwebsite.com]}{[yourwebsite.com]}
-  \end{tabular}\\[4pt]
-  {\footnotesize Last updated: [Month YEAR]}
+  {\LARGE\bfseries Kritagya Dhanda}\\[4pt]
+  {\normalsize \texttt{dhandak@mcmaster.ca} \ \textbar\ \url{https://kritagyadhanda.site}}
 \end{center}
-\vspace{6pt}
-
-% ----------------------------------------------------------------------------
-\section{Education}
-\cventry{\textbf{Ph.D. in Economics}, McMaster University}{(expected) 20XX}
-\cvline{\quad Dissertation: ``[Working title of your dissertation]''}
-\cvline{\quad Committee: [Advisor Name] (Chair), [Committee Member], [Committee Member]}
 \vspace{4pt}
-\cventry{\textbf{M.A. in Economics}, [University]}{20XX}
-\cventry{\textbf{B.A. (Hons.) in Economics}, [University]}{20XX}
 
-% ----------------------------------------------------------------------------
-\section{Fields of Specialization}
-\cvline{\textbf{Primary:} Health Economics, Public Economics}
-\cvline{\textbf{Secondary:} Labour Economics, Applied Microeconomics}
 
-% ----------------------------------------------------------------------------
-\section{Job Market Paper}
-\cvline{``[Title of Your Job Market Paper]''}
-\cvline{\small\textit{Abstract available upon request. One-line summary of the question and main finding.}}
+% ---- Office Contact Info. ----------------------------------
+\section{Office Contact Information}
 
-% ----------------------------------------------------------------------------
-\section{Publications}
-% Numbered, most recent first. Delete this block if you have none yet.
-\begin{enumerate}[leftmargin=*, labelsep=6pt, itemsep=4pt]
-  \item ``[Title of Published Paper],'' with [Coauthor]. \textit{[Journal Name]}, 20XX, Vol.~XX(X), pp.~XXX--XXX.
-\end{enumerate}
+\noindent
+\textbf{Department of Economics}\\
+McMaster University\\
+Kenneth Taylor Hall, Room 426\\
+1280 Main Street West\\
+Hamilton, ON L8S 4M4\\
+P: (905) 525-9140 Ext. 24731\\
+E: \texttt{econgrd@mcmaster.ca} \\
+Canada\\
 
-% ----------------------------------------------------------------------------
-\section{Working Papers}
-\begin{enumerate}[leftmargin=*, labelsep=6pt, itemsep=4pt]
-  \item ``[Title of Working Paper],'' with [Coauthor], 20XX. \textit{(Under review at [Journal])}.
-  \item ``[Title of Second Working Paper],'' 20XX.
-\end{enumerate}
 
-% ----------------------------------------------------------------------------
-\section{Work in Progress}
-\begin{itemize}[leftmargin=*, itemsep=3pt]
-  \item ``[Title of ongoing project],'' with [Coauthor].
-  \item ``[Another project in early stages].''
-\end{itemize}
+% ---- Education ---------------------------------------------
+\section{Graduate Studies}
 
-% ----------------------------------------------------------------------------
-\section{Grants, Honours \& Fellowships}
-\cventry{[Name of Scholarship / Fellowship], [Funder]}{20XX--20XX}
-\cventry{[Graduate Research Award], McMaster University}{20XX}
-\cventry{[Conference Travel Grant], [Funder]}{20XX}
-
-% ----------------------------------------------------------------------------
-\section{Teaching Experience}
-\cvline{\textit{Instructor of Record, McMaster University}}
-\cventry{\quad ECON XXX: [Course Name]}{Fall 20XX}
-\vspace{3pt}
-\cvline{\textit{Teaching Assistant, McMaster University}}
-\cventry{\quad ECON XXX: [Course Name]}{20XX--20XX}
-\cventry{\quad ECON XXX: [Course Name]}{20XX}
-
-% ----------------------------------------------------------------------------
-\section{Research Experience}
-\cventry{Research Assistant to [Professor Name], McMaster University}{20XX--20XX}
-\cventry{Research Assistant, [Institution / Project]}{20XX}
-
-% ----------------------------------------------------------------------------
-\section{Conference \& Seminar Presentations}
-% Add "*" for talks given by a coauthor.
-\cventry{[Conference / Seminar Name], [City]}{20XX}
-\cventry{[Conference / Seminar Name], [City]}{20XX}
-
-% ----------------------------------------------------------------------------
-\section{Professional Service}
-\cvline{\textbf{Referee:} [Journal Name], [Journal Name].}
-\cvline{\textbf{Service:} [e.g., Graduate Student Seminar Organizer], McMaster University, 20XX--20XX.}
-
-% ----------------------------------------------------------------------------
-\section{Skills, Languages \& Citizenship}
-\cvline{\textbf{Software:} Stata, R, Python, \LaTeX, [others].}
-\cvline{\textbf{Languages:} [English (native)], [Other (fluent)].}
-\cvline{\textbf{Citizenship / Work Authorization:} [Country]; [work authorization status].}
-
-% ----------------------------------------------------------------------------
+\phdentry{McMaster University}{2021--present}{PhD in Economics}{Advisor: Professor Adam Lavecchia}{Committee Members: Professor Angela Zheng, Professor Arthur Sweetman, Professor Michel Grignon}
+{Aug 2027}
 \section{References}
-\begin{tabular}{@{}p{0.48\textwidth} p{0.48\textwidth}@{}}
-\textbf{[Advisor Name]} (Chair)          & \textbf{[Committee Member Name]} \\
-Professor of Economics                     & Associate Professor of Economics \\
-McMaster University                        & McMaster University \\
-\href{mailto:[email]}{[email]}             & \href{mailto:[email]}{[email]} \\[8pt]
-\textbf{[Committee Member Name]}          & \textbf{[Reference Name]} \\
-Associate Professor of Economics           & Professor of Economics \\
-{[University]}                              & {[University]} \\
-\href{mailto:[email]}{[email]}             & \href{mailto:[email]}{[email]} \\
-\end{tabular}
+
+\noindent
+\reference
+  {Professor Adam Lavecchia}
+  {Department of Economics}
+  {McMaster University}
+  {laveccha@mcmaster.ca}
+\hfill
+\reference
+  {Professor Angela Zhang}
+  {Department of Economics}
+  {McMaster University}
+  {zhenga17@mcmaster.ca}
+%\hfill
+%\reference
+%  {Arthur Sweetman}
+%  {Department of Economics}
+%  {McMaster University}
+%  {sweetman@mcmaster.ca}
+
+\section{Fields}
+\fields{Labour Economics, Health Economics, Applied Microeconomics}
+
+\section{Prior Education}
+\cventry{University of Windsor}{2019--2021}{Master of Arts in Economics}
+\cventry{Anant National University}{2018--2019}{Post Graduate Diploma in Built Environment}
+\cventry{Ambedkar University Delhi}{2013--2016}{Honours Bachelor of Arts in Economics}
+
+% ---- Experience -------------------------------------------
+\section{Experience}
+
+\cventry{Analyst}{2016--2017}{Quality Council of India}
+\vspace{0.26cm}
+\cventry{Research Intern}{June--July 2014}{Pratham Education Foundation}
+
+% ---- Research ---------------------------------------------
+\section{Research}
+
+\jmp{}{Enrollment, Tuition Subsidies and Welfare: Evidence from Ontario's Tuition Grant}{This paper estimates the effect of tuition subsidies on post-secondary enrollment, identifies the channels through which subsidies operate, and evaluates their welfare implications. I exploit the introduction of Ontario's 30\% Tuition Grant (OTG) in 2012, which provides up to \$1,680  (\$780) annually to income-eligible students enrolled in university (college), using a triple-difference design that leverages variation in parental income, province of residence, and program rollout. Linked administrative tax and post-secondary records for 1.5-generation immigrant children permit direct observation of parental resources and enrollment decisions. Eligibility for the grant increased enrollment by 3 percentage points. The response is concentrated among students whose parents hold little to no capital income, consistent with binding liquidity constraints. I embed the estimated enrollment elasticity in a two-period sufficient-statistics framework to decompose the welfare gain into a liquidity benefit and a fiscal externality. I find that an additional dollar of grant spending raises social welfare by \$1.32, with the fiscal externality from the expanded tax base as the dominant channel.}
+
+\noindent\textbf{\underline{WORKING PAPERS}}\par
+\vspace{4pt}%
+\workingpaper
+  {i}
+  {}
+  {Physiological Constraints and Behavioral Adaptation: How high stakes professionals respond to fasting during Ramadan}{with Stephen Strobel and Mohammed Basit Gilani}
+  {Physiological constraints are often assumed to reduce worker productivity, but workers may instead adapt by changing effort across tasks or over time. We study this question in the Indian Premier League, a high-stakes professional cricket setting with ball-by-ball measures of output. We examine how Muslim batters respond to Ramadan fasting, a predictable physiological shock that potentially affects production. We compare Muslim and non-Muslim players using a difference-in-regression-discontinuities design that uses rule changes over the course of IPL games during and outside the Ramadan period. Muslim players during Ramadan smooth performance over match phases: early high-intensity production is muted, while later production is preserved or increases. Complementary difference-in-differences estimators suggest similar within player results and that teams respond modestly by substituting fasting players at higher rates. The results suggest that when production is divisible and workers can substitute effort across tasks, predictable physiological constraints can alter the composition of output more than its level.}
+
+\workingpaper
+  {ii}
+  {}
+  {Evaluation of Family Planning Policy in India Using Synthetic Control Methods}{}
+  {Publicly funded family planning services have a considerable influence on the fertility decisions of women and, consequently maternal and child health. In November, 2016 an expansive family planning program was launched in 145 districts in seven provinces of India that had previously shown high fertility rates. The program featured (i) increase access to a range of contraceptives, (ii) monetary incentives for beneficiaries who adopt family planning methods, and (iii) information dissemination using mobile vans covering all blocks of a district. This paper documents the effects of this family planning program on a broad set of maternal and child outcomes. I use the generalized synthetic control method to estimate the average treatment effect on the treated districts utilizing administrative data from Health Management Information System of India aggregated to the district level for periods 2009-19. The estimates suggest that the program increased deliveries by 4.6, institutional deliveries of infants by 3.9 and infants weighed at birth by 3.2 per one thousand women of reproductive age. New cases of pregnant women with hypertension decreased by 2 per one thousand women of reproductive age. Heterogeneous treatment effects suggest that the program decreased the fraction of infants born with low-birth-weight in districts with high initial economic activity and increased it in districts with low initial economic activity. }
+
+\noindent\textbf{Published Papers}
+\begin{cvlist}
+  \item Su, L., and Dhanda, K. (2021) ``Financial Capability Formation and the variables that effect it with
+respect to Canadian consumers.''
+        \textit{International Journal of Applied
+Research in Management and Economics}, Volume 4(3), pp.\ 19--42.
+  
+\end{cvlist}
+
+% ---- Teaching ---------------------------------------------
+\section{Teaching}
+
+\instructor
+    {Instructor}
+    {2Z03 -- Intermediate Microeconomics (I)}
+    {Winter 2026}
+    {McMaster University}
+
+\ta{Teaching Assistant}
+   {Econometrics -- I (3EE3), Applied Econometrics (3E03), Labour Economics (3D03), Intermediate Microeconomics -- II (3ZZ3), Intermediate Macroeconomics -- I (2H03)}
+   {McMaster University}
+
+\section{Academic Service}
+
+\serviceentry
+  {Graduate Council Member}
+  {Graduate Curriculum and Policy Committee Member (GCPC)}
+  {2025--2026}
+  {2026--2027}
+  {Faculty of Social Sciences, McMaster University}
+
+% ---- Awards -----------------------------------------------
+\section{Honors, Scholarships, Fellowships, and Grants}
+\begin{cvlist}
+  \item 2025: Research Scholarship, McMaster University, \$6{,}000
+  \item 2021: Graduate Scholarship, McMaster University, \$3{,}000
+  \item 2018: Young Visionary Scholarship, Anant National University, \$19{,}000 
+
+\end{cvlist}
+
+% ---- Presentations ----------------------------------------
+\section{Presentations}
+\begin{cvlist}
+  \item 2026: Simon Fraser University, Canadian Economic Association
+  \item 2026: University of Alberta, Alberta Center for Labour Market Research, Bridging Divides: Immigration and the Future of Labour,
+  \item 2026: University of Toronto, Summer Workshop in Economic Analysis and Theory (S.W.E.A.T),
+  \item 2026: National Tax Association, 119th Annual Conference on Taxation (forthcoming),
+  \item 2025:  \textit{L'Université du Québec à Montréal} (UQAM), Canadian Economic Association,
+  \item 2025: Indian Institute of Management (Ahmedabad), 119th India Management Research Conference (IMRC),
+  \item 2020: International Conference on Advanced Research in Business, Management and Economics (ICABME), Stockholm \textit{(virtual)}
+\end{cvlist}
+
 
 
 \end{document}
