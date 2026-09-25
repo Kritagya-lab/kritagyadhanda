@@ -72,7 +72,7 @@ const SITE = {
     heading: "Working Papers",
     items: [
       {
-        titleText: "The Effect of Tuition Subsidies on Post-Secondary Enrollment: Evidence from Ontario's 30% Tuition Grant",
+        titleText: "Enrollment, Tuition Subsidies and Welfare: Evidence from Ontario's Tuition Grant",
         badge: "Job Market Paper",              // e.g. "Job Market Paper", "R&R at ...", or "" for none
         authors: ["Kritagya Dhanda"],
         year: "2026",
