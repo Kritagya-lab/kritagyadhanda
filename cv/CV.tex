@@ -1,13 +1,3 @@
-%=============================================================
-% Academic CV template
-% Replicates the design of Angela Zheng's CV:
-%   - US Letter, Computer Modern fonts
-%   - Centered name (large bold) + contact line
-%   - Small-caps section headings with a full-width rule
-%   - Two-column entries: bold title (left) / date (right),
-%     institution in italics underneath
-%   - Bulleted research / publication lists
-%=============================================================
 \documentclass[11pt]{article}
 
 % ---- Page geometry ----------------------------------------
@@ -83,6 +73,17 @@
     #2\\
     #3\\
     \texttt{#4}
+  \end{minipage}%
+}
+
+\newcommand{\Offcontinfo}[6]{%
+  \begin{minipage}[t]{0.31\linewidth}
+    \textbf{#1}\\
+    #2\\
+    #3\\
+    #4\\
+    #5\\
+    \texttt{#6}
   \end{minipage}%
 }
 
@@ -163,14 +164,24 @@
 \section{Office Contact Information}
 
 \noindent
-\textbf{Department of Economics}\\
-McMaster University\\
-Kenneth Taylor Hall, Room 426\\
-1280 Main Street West\\
-Hamilton, ON L8S 4M4\\
-P: (905) 525-9140 Ext. 24731\\
-E: \texttt{econgrd@mcmaster.ca} \\
-Canada\\
+\Offcontinfo
+{\textbf{Cynthia Zhao}}
+{Administrative Assistant}
+{McMaster University}
+{Kenneth Taylor Hall}
+{P: (905) 525-9140 Ext. 24731}
+{E: \texttt{econgrd@mcmaster.ca}}
+\noindent
+\hfill
+\noindent
+\Offcontinfo
+{\textbf{Chris Muris}}
+{Placement Officer}
+{McMaster University}
+{Kenneth Taylor Hall}
+{E: \texttt{muerisc@mcmaster.ca}}
+\noindent
+
 
 
 % ---- Education ---------------------------------------------
@@ -178,8 +189,8 @@ Canada\\
 
 \phdentry{McMaster University}{2021--present}{PhD in Economics}{Advisor: Professor Adam Lavecchia}{Committee Members: Professor Angela Zheng, Professor Arthur Sweetman, Professor Michel Grignon}
 {Aug 2027}
-\section{References}
 
+\section{References}
 \noindent
 \reference
   {Professor Adam Lavecchia}
