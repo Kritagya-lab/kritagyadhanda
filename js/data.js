@@ -147,9 +147,9 @@ const SITE = {
   teaching: {
     enabled: true,
     heading: "Teaching",
-    intro: "Courses I have taught or assisted with at McMaster University.",
+    intro: "Courses I have taught at McMaster University.",
     items: [
-      { role: "Instructor", course: "ECON 2Z03: Intermediate Microeconomics", term: "Fall 2025" }
+      { role: "Instructor", course: "ECON 2Z03: Intermediate Microeconomics", term: "Winter 2026" }
       /*{ role: "Teaching Assistant", course: "ECON XXX: Course Name", term: "2023–2025" }*/
     ]
   },
@@ -163,7 +163,7 @@ const SITE = {
     enabled: true,
     heading: "Curriculum Vitae",
     file: "files/CV.pdf",
-    note: "Last updated: December 2025"
+    note: "Last updated: September 2026"
   },
 
   /* ---------------------------------------------------------------------------
