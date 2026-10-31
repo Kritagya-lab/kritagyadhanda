@@ -164,8 +164,7 @@ const SITE = {
   cv: {
     enabled: true,
     heading: "Curriculum Vitae",
-    file: "files/CV.pdf",
-    note: "Last updated: September 2026"
+    file: "files/CV.pdf"
   },
 
   /* ---------------------------------------------------------------------------
